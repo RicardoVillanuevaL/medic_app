@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:medic_app/core/alerts.dart';
 import 'package:medic_app/values/styles.dart';
 
 class CalculatorIMCPage extends StatefulWidget {
@@ -108,6 +109,12 @@ class _CalculatorIMCPageState extends State<CalculatorIMCPage> {
       double resultado =
           double.parse(weight.text) / pow(double.parse(height.text), 2);
       datos = resultado.toStringAsFixed(2);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return MetricsDialog(imc: datos);
+        },
+      );
       print(
           datos); // aca tienes el puto dato imprimiendo no me jodas ctm muestralo bonito
     });
